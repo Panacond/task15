@@ -1,0 +1,10 @@
+
+1~1993~Sumskaya 2~1994~Pushkinskaya 3~1995~Beketova 4~1996~Amosova 5~1996~Amosova ; 1~9~Posad 2~9~Posad 3~10~Colins 4~10~Colins 5~10~Denim ; Colins:3~1995~Beketova Denim:5~1996~Amosova Posad:1~1993~Sumskaya
+
+4~1996~Amosova 5~1996~Amosova ; 100~9~no_such_customer 1~9~Posad 3~10~Colins 4~10~Colins 5~10~Denim ; Denim:5~1996~Amosova
+
+1~1993~Sumskaya 3~1995~Beketova 4~1996~Amosova 5~1996~Amosova ; 1~9~Posad 2~9~Posad 3~10~Colins 4~10~Colins ; Colins:3~1995~Beketova Posad:1~1993~Sumskaya
+
+1~1993~Sumskaya 3~1995~Beketova 4~1996~Amosova 5~1996~Amosova ; 2~9~Posad 3~10~Colins 4~10~Colins 5~10~Denim ; Colins:3~1995~Beketova Denim:5~1996~Amosova
+
+1~1993~Sumskaya 4~1996~Amosova 5~1996~Amosova ; 1~9~Posad 2~9~Posad 4~10~Colins 5~10~Denim ; Colins:4~1996~Amosova Denim:5~1996~Amosova Posad:1~1993~Sumskaya
