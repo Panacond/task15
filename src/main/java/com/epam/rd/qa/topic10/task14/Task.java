@@ -10,25 +10,36 @@ import java.util.stream.Collectors;
 public class Task {
 
     public static List<DiscountOwner> f(List<Supplier> supplierList, List<SupplierDiscount> supplierDiscountList) {
-        supplierDiscountList.stream()
-                    .collect(
-                            Collectors.groupingBy(
-                                    SupplierDiscount::getStoreName,
-                                    Collectors.maxBy(Comparator.comparing(SupplierDiscount::getDiscountPercentage)),
-                                    Collectors.minBy(Comparator.comparing(SupplierDiscount::getCustomerID))
-                            )
-                    );
-        return null;
-//                .distinct()
-//                .map(a ->
-//                    // will convert every time!
-//                    new DiscountOwner(a.getStoreName(), supplierList.stream().collect(
-//                            Collectors.toMap(Supplier::getCustomerID, Function.identity())).get(a.getCustomerID()))
-//                )
-//                .sorted((discountOwner1, discountOwner2) ->
-//                        discountOwner1.getStoreName().compareTo(discountOwner2.getStoreName()))
-//                .collect(Collectors.toList());
-    }
+        return supplierDiscountList.stream()
+        .map(a -> {
+          for(SupplierDiscount i: supplierDiscountList) {
+            if (a.getStoreName().equals(i.getStoreName())) {
+              if (a.getDiscountPercentage() < i.getDiscountPercentage()) {
+                a.setDiscountPercentage(i.getDiscountPercentage());
+              }
+              if (a.getCustomerID() > i.getCustomerID()) {
+                a.setCustomerID(i.getCustomerID());
+              }
+            }
+          }
+          return a;
+        })
+        .distinct()
+        .map(a -> {
+          for (Supplier i : supplierList){
+            if (i.getCustomerID().equals(a.getCustomerID())){
+              return new DiscountOwner(a.getStoreName(), new Supplier(a.getCustomerID(), i.getYearOfBirth(), i.getStreetOfResidence()));
+            }
+          }
+          return null;
+        })
+        .filter(a -> a!= null)
+        .sorted((o1, o2) ->
+            o1.getStoreName().compareTo(o2.getStoreName()))
+        .collect(Collectors.toList());
+  }
+
+}
 
     public static void main(String[] args) {
         List<Supplier> supplierList = Arrays.asList(
